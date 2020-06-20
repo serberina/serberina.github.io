@@ -1,11 +1,18 @@
-# blog
-FrontEnd + Manage + backEnd + mongodb(umi3 + egg + mongodb)
+import { defineConfig } from 'umi';
+import { routes } from './src/routes/index';
+import { PROXY } from './src/utils/constants'
 
-```
-package.json scripts
-"analyz": "cross-env ANALYZE=1 umi build"
-1. cdn
-externals: {
+export default defineConfig({
+  proxy:{
+    '/api': {
+      target: PROXY
+    }
+  },
+  nodeModulesTransform: {
+    type: 'none',
+  },
+  routes,
+  externals: {
     [`highlight.js`]: 'window.hljs',
     moment: 'window.moment',
     react: 'window.React',
@@ -19,12 +26,4 @@ externals: {
     'https://cdn.bootcdn.net/ajax/libs/react-dom/16.12.0/umd/react-dom.production.min.js',
     'https://cdn.bootcdn.net/ajax/libs/marked/1.1.0/marked.min.js',
   ]
-  2. qiniu cloud cdn
-  3. nginx.conf server
-        gzip on;
-        gzip_buffers 32 4k;
-        gzip_comp_level 6;
-        gzip_min_length 200;
-        gzip_types text/css text/xml application/javascript;
-        gzip_vary on;
-  ```
+});

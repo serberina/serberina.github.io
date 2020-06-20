@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "name": "serberina-blog",
+  "version": "1.0.0",
+  "description": "serberina blog",
+  "author": "serberina",
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "analyz": "cross-env ANALYZE=1 umi build"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@types/highlight.js": "^9.12.4",
+    "@types/react-lazyload": "^2.6.0",
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.2.2",
+    "antd": "3.26.16",
+    "highlight.js": "^10.0.3",
+    "lint-staged": "^10.0.7",
+    "marked": "^1.1.0",
+    "moment": "^2.26.0",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-countup": "^4.3.3",
+    "react-dom": "^16.12.0",
+    "react-lazyload": "^2.6.7",
+    "react-markdown": "^4.3.1",
+    "umi": "^3.2.2",
+    "yorkie": "^2.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  }
+}
